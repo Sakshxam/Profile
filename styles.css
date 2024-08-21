@@ -1,0 +1,321 @@
+body {
+ font-family: 'Roboto Slab', serif;
+ margin: 0;
+ padding: 0;
+ overflow: hidden;
+ transition: background-color 0.3s, color 0.3s;
+ background-color: #F5F5F5; 
+ color: #333;
+}
+.dark-mode {
+ background-color: #121212; 
+ color: #E0E0E0;
+}
+.pages {
+ display: flex;
+ flex-direction: column;
+ width: 100vw;
+ height: 100vh;
+ overflow: hidden;
+ transition: opacity 0.5s ease-in-out;
+}
+.page {
+ min-height: 100vh;
+ display: none;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ background-color: transparent; 
+ padding: 20px;
+ opacity: 0;
+}
+.page.active {
+ display: flex;
+ opacity: 1;
+}
+h1 {
+ font-size: 36px;
+ margin-bottom: 20px;
+ color: inherit;
+ text-align: center; 
+}
+#navigation {
+ position: fixed;
+ top: 30%;
+ left: 0;
+ transform: translateY(-50%);
+ background-color: rgba(255, 255, 255, 0.9); 
+ border-radius: 0 10px 10px 0;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ overflow: hidden;
+ z-index: 10;
+ transition: transform 0.3s, backdrop-filter 0.3s;
+ transform: translateX(-100%);
+ backdrop-filter: blur(10px); 
+}
+#navigation.open {
+ transform: translateX(0);
+}
+.dark-mode #navigation {
+ background-color: rgba(30, 30, 30, 0.9); 
+}
+.nav-item {
+ margin: 20px 0;
+ text-align: center;
+}
+.nav-item a {
+ text-decoration: none;
+ color: inherit;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 10px;
+ width: 100%;
+ box-sizing: border-box;
+ transition: background-color 0.3s, color 0.3s;
+}
+.nav-item a:hover {
+ background-color: #333;
+ color: #F5F5F5; 
+}
+.nav-item a i {
+ margin-right: 10px;
+}
+.dark-mode .nav-item a:hover {
+ background-color: #F5F5F5; 
+ color: #333;
+}
+.dark-mode-toggle {
+ position: fixed;
+ top: 20px;
+ right: 20px;
+ background-color: transparent;
+ padding: 0;
+ border-radius: 50%;
+ cursor: pointer;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ z-index: 20;
+ transition: transform 0.5s;
+ outline: none;
+}
+.dark-mode-toggle i {
+ color: #333;
+ font-size: 30px; 
+}
+.dark-mode .dark-mode-toggle i {
+ color: #F5F5F5;
+}
+.dark-mode-toggle.rotate {
+ transform: rotate(180deg);
+}
+.social-buttons {
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+}
+.social-button {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 10px 20px;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ background-color: #e0e0e0;
+ color: #333;
+ transition: background-color 0.3s, color 0.3s;
+}
+.social-button i {
+ margin-right: 10px;
+}
+.social-button.email:hover {
+ background-color: #ff7675;
+ color: white;
+}
+.social-button.phone:hover {
+ background-color: #7fd491;
+ color: white;
+}
+.social-button.discord:hover {
+ background-color: #5865f2;
+ color: white;
+}
+.social-button.github:hover {
+ background-color: #333;
+ color: white;
+}
+.social-button.youtube:hover {
+ background-color: #ff0000;
+ color: white;
+}
+#newsletter-form {
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ width: 300px;
+}
+#newsletter-form .checkbox-wrapper-39 {
+ display: flex;
+ align-items: center;
+ margin-bottom: 10px; 
+}
+#newsletter-form .checkbox-wrapper-39 label {
+ display: block;
+ width: 35px;
+ height: 35px;
+ cursor: pointer;
+ margin-right: 15px; 
+}
+#newsletter-form .checkbox-wrapper-39 input {
+ visibility: hidden;
+ display: none;
+}
+#newsletter-form .checkbox-wrapper-39 input:checked ~ .checkbox {
+ transform: rotate(45deg);
+ width: 14px;
+ margin-left: 12px;
+ border-color: #24c78e;
+ border-top-color: transparent;
+ border-left-color: transparent;
+ border-radius: 0;
+}
+#newsletter-form .checkbox-wrapper-39 .checkbox {
+ display: block;
+ width: inherit;
+ height: inherit;
+ border: 3px solid #434343;
+ border-radius: 6px;
+ transition: all 0.375s;
+}
+#newsletter-form button {
+ padding: 10px 20px;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ background-color: #007bff; 
+ color: #F5F5F5;
+ transition: background-color 0.3s, color 0.3s;
+}
+#newsletter-form button:hover {
+ background-color: #0056b3; 
+ color: white;
+}
+.hamburger-icon {
+ position: fixed;
+ top: 20px;
+ left: 20px;
+ background-color: transparent;
+ padding: 20px;
+ border-radius: 50%; 
+ cursor: pointer;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ z-index: 20;
+ transition: transform 0.5s;
+ outline: none;
+ border: none; 
+}
+.hamburger-icon i {
+ color: #333;
+ font-size: 30px; 
+ transition: transform 0.3s;
+}
+.dark-mode .hamburger-icon i {
+ color: #F5F5F5;
+}
+.hamburger-icon.rotate {
+ transform: rotate(180deg);
+}
+#navigation-popup {
+ display: none;
+ position: fixed;
+ top: 51%;
+ left: 55%;
+ transform: translate(-50%, -50%);
+ background-color: #F5F5F5; 
+ color: #333;
+ padding: 30px; 
+ width: 80%; 
+ max-width: 365px; 
+ border-radius: 50px; 
+ box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); 
+ z-index: 30;
+}
+.dark-mode #navigation-popup {
+ background-color: #121212; 
+ color: #E0E0E0;
+}
+#close-popup {
+ display: block;
+ margin: 20px auto 0; 
+ padding: 10px 20px;
+ background-color: #333;
+ color: #F5F5F5;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ transition: background-color 0.3s, color 0.3s;
+ text-align: center; 
+}
+.dark-mode #close-popup {
+ background-color: #F5F5F5;
+ color: #333;
+}
+#close-popup:hover {
+ background-color: #555;
+ color: white;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+ padding: 10px;
+ border-radius: 8px; 
+ border: 1px solid #ddd; 
+ margin: 10px 0; 
+ width: 100%; 
+ box-sizing: border-box; 
+ transition: border-color 0.3s;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+ border-color: #007bff; 
+ outline: none; 
+}
+@media (max-width: 768px) {
+ .social-buttons {
+ flex-direction: row;
+ gap: 5px;
+ }
+ #newsletter-form {
+ width: 100%;
+ }
+ #navigation {
+ top: 10%;
+ left: 0;
+ transform: translateY(0);
+ }
+}
+.box-container {
+ width: 1000px; 
+ height: 603px; 
+ background-color: #fff;
+ border-radius: 20px; 
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ padding: 0;
+ box-sizing: border-box;
+ overflow: hidden; 
+}
+.iframe-container {
+ width: 100%; 
+ height: 100%; 
+ overflow: hidden; 
+ position: relative; 
+ border: 1px solid #ddd; 
+ border-radius: 10px; 
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+.iframe-container iframe {
+ width: 100%; 
+ height: 100%; 
+ border: none; 
+}

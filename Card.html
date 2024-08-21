@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax 3D Profile Card</title>
+    <link rel="icon" href="image.gif" type="image/gif"> <!-- Ensure this is a circular image -->
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            transition: background 0.3s;
+        }
+
+        .dark-theme {
+            background: #121212;
+            color: #ffffff;
+        }
+
+        .container {
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 400px;
+            height: 480px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            border-radius: 15px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            transform-style: preserve-3d;
+            transition: transform 0.1s;
+            position: relative;
+        }
+
+        .card.is-flipped {
+            transition: transform 0.5s;
+            transform: rotateY(180deg);
+        }
+
+        .card__face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #fff;
+        }
+
+        .card__face--front {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+        }
+
+        .card__face--back {
+            background: #3a3f47;
+            transform: rotateY(180deg);
+            justify-content: flex-start;
+            padding-top: 40px;
+        }
+
+        .card__content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card__image {
+            width: 120px;
+            height: 120px;
+            background: url('image.gif') center/cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card__name {
+            margin: 10px 0 5px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .card__post {
+            text-align: center;
+            font-size: 18px;
+            color: #dcdcdc;
+            margin-bottom: 20px;
+        }
+
+        .card__social {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .card__social a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card__social img {
+            width: 50px;
+            height: 50px;
+            border-radius: 0%;
+            transition: transform 0.3s;
+        }
+
+        .card__social img:hover {
+            transform: scale(1.5);
+        }
+
+        .flip-button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: #fff;
+            color: #6e8efb;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .flip-button:hover {
+            background: #dcdcdc;
+        }
+
+        .shake-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .shake-button:hover {
+            background: #dcdcdc;
+        }
+
+        .shake {
+            animation: shake 0.1s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        footer {
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-text {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .deal-button {
+            padding: 10px 20px;
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .deal-button:hover {
+            background: #e68900;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="card" class="card">
+            <div class="card__face card__face--front">
+                <div class="card__content">
+                    <div class="card__image"></div>
+                    <p class="card__name">Saksham</p>
+                    <p class="card__post">Hello There My Name Is Saksham. And Yeah I made this Card you can explore it. If you liked it and want to customize! Feel free to message me @ Discord</p>
+                    <button class="flip-button" onclick="flipCard()">Flip Card</button>
+                </div>
+            </div>
+            <div class="card__face card__face--back">
+                <div class="card__content">
+                    <p class="card__name">About Me</p>
+                    <p class="card__post">I am passionate about computer science and technology. Always curious, learning, coding, and exploring new tech with enthusiasm!</p>
+                    <div class="card__social">
+                        <a href="https://discord.com/users/818340729511215166" target="_blank">
+                            <img src="discord.png" alt="Discord">
+                        </a>
+                        <a href="https://youtube.com/@Saksham27" target="_blank">
+                            <img src="youtube.png" alt="YouTube">
+                        </a>
+                    </div>
+                    <button class="flip-button" onclick="flipCard()">Back to Front</button>
+                </div>
+                <button class="shake-button" onclick="shakeCard()">Shake</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p class="footer-text">Want Like This? Get yours now for free!</p>
+        <button class="deal-button" onclick="redirectToDiscord()">Limited Time Deal</button>
+    </footer>
+    <script>
+        let card = document.getElementById('card');
+
+        function flipCard() {
+            card.classList.toggle('is-flipped');
+        }
+
+        function shakeCard() {
+            card.classList.add('shake');
+            setTimeout(() => {
+                card.classList.remove('shake');
+            }, 2500);
+        }
+
+        function redirectToDiscord() {
+            alert('You will be redirected to Discord profile. From there, you can message me.');
+            window.location.href = 'https://discord.com/users/818340729511215166';
+        }
+
+        document.addEventListener('mousemove', (event) => {
+            const { clientX, clientY } = event;
+            const { innerWidth, innerHeight } = window;
+
+            const xRotation = ((clientY / innerHeight) - 0.5) * 30;
+            const yRotation = ((clientX / innerWidth) - 0.5) * -30;
+
+            card.style.transition = 'transform 0.1s';
+            card.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) rotateY(${card.classList.contains('is-flipped') ? 180 : 0}deg)`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            card.style.transition = 'transform 0.5s';
+            card.style.transform = `rotateX(0) rotateY(${card.classList.contains('is-flipped') ? 180 : 0}deg)`;
+        });
+    </script>
+</body>
+</html>

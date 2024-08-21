@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakshxam</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="navigation">
+        <div class="nav-item">
+            <a href="#home" class="nav-link">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="#about" class="nav-link">
+                <i class="fas fa-user"></i> About Me
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="#interests" class="nav-link">
+                <i class="fas fa-star"></i> Interests
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="#contact" class="nav-link">
+                <i class="fas fa-envelope"></i> Contact
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="#card" class="nav-link">
+                <i class="fas fa-address-card"></i> Parallax Card
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="#newsletter" class="nav-link">
+                <i class="fas fa-newspaper"></i> Newsletter
+            </a>
+        </div>
+    </div>
+
+    <button class="hamburger-icon">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="dark-mode-toggle">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </div>
+
+    <div class="pages">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <h1>Saksh x am</h1>
+            <p>Welcome to my personal website!</p>
+        </section>
+
+        <!-- About Me Page -->
+        <section id="about" class="page">
+            <h1>About Me</h1>
+            <p>Hi, I'm Saksh x am. I'm a developer with a passion for creating dynamic and engaging web applications. I love exploring new technologies and improving my skills every day.</p>
+        </section>
+
+        <!-- Interests Page -->
+        <section id="interests" class="page">
+            <h1>My Interests</h1>
+            <ul id="interests-content" class="interests-list">
+                <li>Coding</li>
+                <li>Gaming</li>
+                <li>Jogging</li>
+                <li>Table Tennis</li>
+            </ul>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <h1>Contact & Social Media</h1>
+            <div class="social-buttons">
+                <button class="social-button email">
+                    <i class="fas fa-envelope"></i> Email: We are working on it
+                </button>
+                <button class="social-button phone">
+                    <i class="fas fa-phone"></i> Phone: We are working on it
+                </button>
+                <button class="social-button discord" onclick="window.open('https://discord.com/users/818340729511215166')">
+                    <i class="fab fa-discord"></i> Discord
+                </button>
+                <button class="social-button github" onclick="window.open('https://github.com/sakshxam')">
+                    <i class="fab fa-github"></i> GitHub
+                </button>
+                <button class="social-button youtube" onclick="window.open('https://youtube.com/@Saksham27')">
+                    <i class="fab fa-youtube"></i> YouTube
+                </button>
+            </div>
+        </section>
+
+        <!-- Parallax Card Page -->
+        <section id="card" class="page">
+            <h1>Parallax Profile Card</h1>
+            <div class="box-container">
+                <div class="iframe-container">
+                    <iframe src="Card.html"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Page -->
+        <section id="newsletter" class="page">
+            <h1>Newsletter</h1>
+            <form id="newsletter-form" action="https://formspree.io/f/mldrlvpa" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <div class="newsletter-options">
+                    <div class="checkbox-wrapper-39">
+                        <label>
+                            <input type="checkbox" name="subscribe" required />
+                            <span class="checkbox"></span>
+                        </label>
+                    </div>
+                    <span>Subscribe to our newsletter</span>
+                </div>
+                <button type="submit">Subscribe for free</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Popup -->
+    <div id="navigation-popup">
+        <p>Use the navigation bar to switch between pages.</p>
+        <button id="close-popup">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
